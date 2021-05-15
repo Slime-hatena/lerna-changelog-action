@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "lerna-changelog-action",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Generating a changelog via lerna-changelog",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://https://github.com/Slime-hatena/lerna-changelog-action"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "Slime-hatena",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6"
