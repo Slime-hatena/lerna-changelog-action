@@ -25,7 +25,8 @@
   "author": "Slime-hatena",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.7"
+    "@actions/core": "^1.2.7",
+    "lerna-changelog": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
