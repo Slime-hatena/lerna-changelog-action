@@ -15,7 +15,7 @@ export function info(text: string, isReturn = false): string | undefined {
 }
 
 export function success(text: string, isReturn = false): string | undefined {
-    const result = `\u001b[32m${text}`;
+    const result = `\u001b[32m${text}\u001b[m`;
     if (isReturn) {
         return result;
     }
@@ -23,7 +23,7 @@ export function success(text: string, isReturn = false): string | undefined {
 }
 
 export function warn(text: string, isReturn = false): string | undefined {
-    const result = `\u001b[33m${text}`;
+    const result = `\u001b[33m${text}\u001b[m`;
     if (isReturn) {
         return result;
     }
@@ -31,7 +31,7 @@ export function warn(text: string, isReturn = false): string | undefined {
 }
 
 export function error(text: string, isReturn = false): string | undefined {
-    const result = `\u001b[31m${text}`;
+    const result = `\u001b[31m${text}\u001b[m`;
     if (isReturn) {
         return result;
     }
