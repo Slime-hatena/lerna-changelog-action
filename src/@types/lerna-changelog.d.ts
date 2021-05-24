@@ -3,8 +3,8 @@ declare module 'lerna-changelog' {
         repo: string;
         nextVersion: string | undefined;
         rootPath: string;
-        labels: Array<string>;
-        ignoreCommitters: Array<string>;
+        labels: string[];
+        ignoreCommitters: string[];
         cacheDir: string;
     }
 
