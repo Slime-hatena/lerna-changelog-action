@@ -1,9 +1,12 @@
 declare module 'lerna-changelog' {
+    export interface LabelDictionary {
+        [key: string]: string;
+    }
     export interface constructorConfig {
         repo: string;
         nextVersion: string | undefined;
         rootPath: string;
-        labels: string[];
+        labels: LabelDictionary;
         ignoreCommitters: string[];
         cacheDir: string;
     }
