@@ -75,7 +75,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.wait = void 0;
 function wait(milliseconds) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             if (isNaN(milliseconds)) {
                 throw new Error('milliseconds not a number');
             }
@@ -282,6 +282,7 @@ exports.getInput = getInput;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function setOutput(name, value) {
+    process.stdout.write(os.EOL);
     command_1.issueCommand('set-output', { name }, value);
 }
 exports.setOutput = setOutput;
