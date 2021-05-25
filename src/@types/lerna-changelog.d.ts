@@ -18,6 +18,6 @@ declare module 'lerna-changelog' {
 
     export class Changelog {
         constructor(config: constructorConfig);
-        createMarkdown(options: createMarkdownConfig): string;
+        createMarkdown(options: createMarkdownConfig): Promise<string>;
     }
 }
