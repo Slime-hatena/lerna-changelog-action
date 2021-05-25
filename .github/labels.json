@@ -107,7 +107,8 @@
     {
         "name": "Type: Maintenance",
         "color": "abd406",
-        "description": "Repository Maintenance"
+        "description": "Repository Maintenance",
+        "aliases": ["dependencies"]
     },
     {
         "name": "Type: CI",
