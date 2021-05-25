@@ -1,28 +1,25 @@
-import {wait} from '../src/wait';
+import {info} from '../src/Output';
+import {Changelog} from '../src/Changelog';
 import * as process from 'process';
-import * as cp from 'child_process';
-import * as path from 'path';
+import * as fs from 'fs';
 
-test('throws invalid number', async () => {
-    const input = parseInt('foo', 10);
-    await expect(wait(input)).rejects.toThrow('milliseconds not a number');
-});
+test('create markdown', async () => {
+    process.env['GITHUB_AUTH'] = fs.readFileSync('./.GITHUB_AUTH').toString();
 
-test('wait 500 ms', async () => {
-    const start = new Date();
-    await wait(500);
-    const end = new Date();
-    var delta = Math.abs(end.getTime() - start.getTime());
-    expect(delta).toBeGreaterThan(450);
-});
-
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-    process.env['INPUT_MILLISECONDS'] = '500';
-    const np = process.execPath;
-    const ip = path.join(__dirname, '..', 'lib', 'main.js');
-    const options: cp.ExecFileSyncOptions = {
-        env: process.env
+    const from = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+    const to = 'origin/main';
+    const labels = {
+        'Type: Breaking Change': 'Breaking Change',
+        'Type: Feature': 'Feature',
+        'Type: Bug': 'Bug fix',
+        'Type: Maintenance': 'Maintenance',
+        'Type: Documentation': 'Documentation',
+        'Type: Refactoring': 'Refactoring'
     };
-    console.log(cp.execFileSync(np, [ip], options).toString());
+
+    const changelog = new Changelog(labels);
+    changelog.repo = 'Slime-hatena/lerna-changelog-action';
+
+    const markdown = await changelog.generate(from, to);
+    info(markdown);
 });
