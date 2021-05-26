@@ -1,5 +1,5 @@
 name: 'build-test'
-on: # rebuild any PRs and main branch changes
+on:
     pull_request:
     push:
         branches:
@@ -8,7 +8,7 @@ on: # rebuild any PRs and main branch changes
             - 'releases/*'
 
 jobs:
-    build: # make sure build/ci work properly
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -18,10 +18,27 @@ jobs:
             - run: yarn run all
               env:
                   GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
-    test: # make sure the action works on a clean machine without building
+    test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - uses: ./
+            - name: 'Test run (REMOVE_TITLE_LINE: false)'
+              uses: ./
+              id: run1
               with:
-                  milliseconds: 1000
+                  GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
+                  LABEL_SETTING_FILE_PATH: './.github/semantic_versioning_label.json'
+                  TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+                  TAG_TO: 'origin/develop'
+                  REMOVE_TITLE_LINE: 'false'
+            - run: echo ${{steps.run1.outputs.markdown}}
+            - name: 'Test run (REMOVE_TITLE_LINE: true)'
+              uses: ./
+              id: run2
+              with:
+                  GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
+                  LABEL_SETTING_FILE_PATH: './.github/semantic_versioning_label.json'
+                  TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+                  TAG_TO: 'origin/develop'
+                  REMOVE_TITLE_LINE: 'true'
+            - run: echo ${{steps.run2.outputs.markdown}}
