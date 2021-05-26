@@ -25,8 +25,19 @@ test('check Changelog.ts', async () => {
     const changelog = new Changelog(labels);
     changelog.repo = 'Slime-hatena/lerna-changelog-action';
 
-    const markdown = await changelog.generate(from, to);
+    let markdown = await changelog.generate(from, to);
+
+    success('------------------');
     info(markdown);
+    success('------------------');
+    markdown = markdown.substr(
+        markdown.indexOf(
+            '\n',
+            markdown.indexOf('\n', markdown.indexOf('\n', 0) + 1) + 1
+        ) + 1
+    );
+    info(markdown);
+    success('------------------');
 });
 
 test('check Output.ts', async () => {
