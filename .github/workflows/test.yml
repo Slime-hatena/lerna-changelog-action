@@ -27,7 +27,7 @@ jobs:
               id: run1
               with:
                   GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
-                  LABEL_SETTING_FILE_PATH: './.github/semantic_versioning_label.json'
+                  LABEL_SETTING_FILE_PATH: './.github/lerna-changelog.json'
                   TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
                   TAG_TO: 'origin/develop'
                   REMOVE_TITLE_LINE: 'false'
@@ -37,7 +37,7 @@ jobs:
               id: run2
               with:
                   GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
-                  LABEL_SETTING_FILE_PATH: './.github/semantic_versioning_label.json'
+                  LABEL_SETTING_FILE_PATH: './.github/lerna-changelog.json'
                   TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
                   TAG_TO: 'origin/develop'
                   REMOVE_TITLE_LINE: 'true'
