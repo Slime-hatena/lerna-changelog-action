@@ -33,7 +33,7 @@ jobs:
                   TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
                   TAG_TO: 'origin/develop'
                   REMOVE_TITLE_LINE: 'false'
-            - run: echo ${{steps.run1.outputs.markdown}}
+            - run: echo "${{steps.run1.outputs.markdown}}"
             - name: 'Test run (REMOVE_TITLE_LINE: true)'
               uses: ./
               id: run2
@@ -43,4 +43,4 @@ jobs:
                   TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
                   TAG_TO: 'origin/develop'
                   REMOVE_TITLE_LINE: 'true'
-            - run: echo ${{steps.run2.outputs.markdown}}
+            - run: echo "${{steps.run2.outputs.markdown}}"
