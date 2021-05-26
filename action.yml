@@ -8,7 +8,7 @@ inputs:
     LABEL_SETTING_FILE_PATH:
         description: 'Specify the file path to the json file for label settings. The default value is "./.github/semantic_versioning_label.json".'
         required: false
-        default: './.github/semantic_versioning_label.json'
+        default: './.github/lerna-changelog.json'
     TAG_FROM:
         description: 'Specify the range of release note generation using a format that git understands. For example: origin/main, 4b825dc6, etc. The default value is "4b825dc642cb6eb9a060e54bf8d69288fbee4904".'
         required: false
