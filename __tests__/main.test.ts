@@ -4,7 +4,12 @@ import * as process from 'process';
 import * as fs from 'fs';
 
 test('check Changelog.ts', async () => {
-    process.env['GITHUB_AUTH'] = fs.readFileSync('./.GITHUB_AUTH').toString();
+    if (process.env['GITHUB_AUTH'] === undefined) {
+        warn("process.env.GITHUB_AUTH is not set. Set from '/.GITHUB_AUTH'.");
+        process.env['GITHUB_AUTH'] = fs
+            .readFileSync('./.GITHUB_AUTH')
+            .toString();
+    }
 
     const from = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
     const to = 'origin/main';
