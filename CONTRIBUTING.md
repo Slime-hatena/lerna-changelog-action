@@ -1,11 +1,11 @@
 # Contribution Guide
 
-Thanks for your interest in the project.  
-This is a guide on how to contribute to this repository. The following is a guideline, not a rule. If you have suggestions to make it better, please let us know via pull request or issue.
+Thanks for your interest for the project.  
+This is a guide that how to contribute to this repository. These are mostly guidelines, not rules. If you have suggestions to make it better, please let me know via Pull requests or Issues.
 
 ## Issues
 
-If you have any problems, improvements, or questions, please send them to us via Issue.
+If you have any problems, improvements, or questions, please send them to us via Issues.
 
 - [Bug report](https://github.com/slime-hatena/lerna-changelog-action/issues/new?template=1.bug_report.md)
 - [Feature request](https://github.com/slime-hatena/lerna-changelog-action/issues/new?template=2.feature_request.md)
@@ -24,9 +24,15 @@ The changelog will be generated using the title of the pull request. Keep the fo
 
 ## Environment setup
 
-Prepare the following applications.
+Prepare the following tools.
 
 - yarn 1.22.10+ (You may also be able to use npm. I haven't tried it.)
+
+Install the yarn package.
+
+```bash
+yarn install
+```
 
 ### Build
 
@@ -41,7 +47,7 @@ yarn run all
 ### Code
 
 All JavaScript code is linted with [Prettier](https://prettier.io/).  
-Please do a style check before committing.
+Please run below command before commiting to check code styles.
 
 ```bash
 yarn run format-check
@@ -74,7 +80,7 @@ The commit message is set based on "[Conventional Commits](https://www.conventio
 Must be one of the following:
 
 - **build**: Changes that affect the build system or external dependencies. (example scopes: yarn)
-- **ci**: Changes to our CI configuration files and scripts. (example scopes: GitHub Action)
+- **ci**: Changes to our CI configuration files and scripts. (example scopes: action)
 - **docs**: Documentation only changes.
 - **feat**: A new feature.
 - **fix**: A bug fix.

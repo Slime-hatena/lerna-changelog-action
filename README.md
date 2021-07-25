@@ -1,8 +1,5 @@
 # lerna-changelog action
-
-<p align="center">
-  <a href="https://github.com/Slime-hatena/semantic-versioning-for-github-release-action/actions/workflows/test.yml"><img alt="units-test" src="https://github.com/Slime-hatena/semantic-versioning-for-github-release-action/actions/workflows/test.yml/badge.svg"></a>
-</p>
+[![test.yml/badge](https://github.com/Slime-hatena/lerna-changelog-action/actions/workflows/test.yml/badge.svg)](https://github.com/slime-hatena/lerna-changelog-action/actions/workflows/test.yml)
 
 Use lerna-changelog in GitHub action.
 
@@ -10,14 +7,14 @@ Use lerna-changelog in GitHub action.
 
 ### Input
 
-| Name                      | Description                                                                                                                | Default                                      | Required |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | :------: |
-| `GITHUB_AUTH`             | Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN.                              |                                              |    \*    |
-| `LABEL_SETTING_FILE_PATH` | Specify the file path to the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |          |
-| `TAG_FROM`                | Specify the range of release note generation using a format that git understands. For example: origin/main, 4b825dc6, etc. | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |          |
-| `TAG_TO`                  | Specify the range of release note generation using a format that git understands. For example: origin/main, 4b825dc6, etc. | `'origin/main'`                              |          |
-| `NEXT_VERSION_TITLE`      | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |          |
-| `REMOVE_TITLE_LINE`       | Remove the title line from the changelog.                                                                                  | `'true'`                                     |          |
+| Name                       | Description                                                                                                                | Default                                      |
+| -------------------------  | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `GITHUB_AUTH`              | (Required) Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN.                   |                                              |
+| `LABEL_SETTINGS_FILE_PATH` | Specify the file path of the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |
+| `TAG_FROM`                 | Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc.                                 | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |
+| `TAG_TO`                   | Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc.                                   | `'origin/main'`                              |
+| `RELEASE_TITLE`            | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |
+| `REMOVE_TITLE_LINE`        | Remove the title line from the changelog.                                                                                  | `'true'`                                     |
 
 ### Output
 
@@ -27,7 +24,7 @@ Use lerna-changelog in GitHub action.
 
 ## Example
 
-### Action setting
+### Action settings
 
 ```yml
 name: 'generate changelog'
@@ -54,7 +51,7 @@ jobs:
 
 ### LABEL_SETTING_FILE_PATH (./.github/semantic_versioning_label.json)
 
-```json
+```jsonc
 {
   // Label name : Heading text in changelog.
   "Type: Breaking Change": "Breaking Change",
@@ -66,7 +63,7 @@ jobs:
 }
 ```
 
-### Output
+### Result
 
 ```md
 #### Feature
@@ -83,7 +80,7 @@ jobs:
 
 ```
 
-### Output with release title.
+### Result with title
 
 ```md
 
