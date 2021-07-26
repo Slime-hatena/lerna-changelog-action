@@ -6,8 +6,8 @@ import {info, success, error, br} from '../src/Output';
 async function run(): Promise<void> {
     try {
         process.env['GITHUB_AUTH'] = core.getInput('GITHUB_AUTH');
-        const LABEL_SETTING_FILE_PATH = core.getInput(
-            'LABEL_SETTING_FILE_PATH'
+        const LABEL_SETTINGS_FILE_PATH = core.getInput(
+            'LABEL_SETTINGS_FILE_PATH'
         );
         const TAG_FROM = core.getInput('TAG_FROM');
         const TAG_TO = core.getInput('TAG_TO');
@@ -16,7 +16,7 @@ async function run(): Promise<void> {
             core.getInput('REMOVE_TITLE_LINE').toLowerCase() === 'true';
 
         const labelSettings = JSON.parse(
-            fs.readFileSync(LABEL_SETTING_FILE_PATH, 'utf8')
+            fs.readFileSync(LABEL_SETTINGS_FILE_PATH, 'utf8')
         );
         const changelog = new Changelog(labelSettings);
 
