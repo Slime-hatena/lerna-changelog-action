@@ -1,6 +1,9 @@
 name: 'lerna-changelog for GitHub action'
 description: 'Generating a changelog via lerna-changelog.'
-author: 'Slime-hatena'
+author: 'slime-hatena'
+branding:
+    icon: 'file-text'
+    color: 'blue'
 inputs:
     GITHUB_AUTH:
         description: 'Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN. This value must be specified.'
