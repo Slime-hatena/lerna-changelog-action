@@ -12,7 +12,7 @@ test('check Changelog.ts', async () => {
     }
 
     const from = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
-    const to = 'origin/develop';
+    const to = 'origin/main';
     const labels = {
         'Type: Breaking Change': 'Breaking Change',
         'Type: Feature': 'Feature',
