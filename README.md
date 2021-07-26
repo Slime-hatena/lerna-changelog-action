@@ -36,7 +36,7 @@ jobs:
   changelog:
     runs-on: ubuntu-latest
     steps:
-      // To reference old commits, fetch-depth: 0 is required.
+      # To reference old commits, fetch-depth: 0 is required.
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
