@@ -102,6 +102,6 @@ jobs:
 
 ## Acknowledgements
 
-- [lerna/lerna-changelog](https://github.com/lerna/lerna-changelog)
-- [actions/typescript-action](https://github.com/actions/typescript-action)
-- [actions/javascript-action](https://github.com/actions/javascript-action)
+-   [lerna/lerna-changelog](https://github.com/lerna/lerna-changelog)
+-   [actions/typescript-action](https://github.com/actions/typescript-action)
+-   [actions/javascript-action](https://github.com/actions/javascript-action)

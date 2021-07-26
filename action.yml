@@ -1,11 +1,33 @@
-name: 'Semantic versioning for GitHub release'
+name: 'lerna-changelog for GitHub action'
 description: 'Generating a changelog via lerna-changelog.'
 author: 'Slime-hatena'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    GITHUB_AUTH:
+        description: 'Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN. This value must be specified.'
+        required: true
+    LABEL_SETTINGS_FILE_PATH:
+        description: 'Specify the file path of the json file for label settings. The default value is "./.github/semantic_versioning_label.json".'
+        required: false
+        default: './.github/lerna-changelog.json'
+    TAG_FROM:
+        description: 'Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc. The default value is "4b825dc642cb6eb9a060e54bf8d69288fbee4904".'
+        required: false
+        default: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+    TAG_TO:
+        description: 'Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc. The default value is "origin/main".'
+        required: false
+        default: 'origin/main'
+    RELEASE_TITLE:
+        description: 'Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)". The default value is "".'
+        required: false
+        default: ''
+    REMOVE_TITLE_LINE:
+        description: 'Remove the title line from the changelog. The default value is "true".'
+        required: false
+        default: 'true'
+outputs:
+    markdown:
+        description: 'Generated changelog.'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+    using: 'node12'
+    main: 'dist/index.js'

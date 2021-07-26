@@ -1,25 +1,46 @@
 name: 'build-test'
-on: # rebuild any PRs and main branch changes
-  pull_request:
-  push:
-    branches:
-      - main
-      - develop
-      - 'releases/*'
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+            - develop
+            - 'releases/*'
 
 jobs:
-  build: # make sure build/ci work properly
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          npm install
-      - run: |
-          npm run all
-  test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          milliseconds: 1000
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - run: yarn install --frozen-lockfile
+            - run: yarn run all
+              env:
+                  GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: 'Test run (REMOVE_TITLE_LINE: false)'
+              uses: ./
+              id: run1
+              with:
+                  GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
+                  LABEL_SETTINGS_FILE_PATH: './.github/lerna-changelog.json'
+                  TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+                  TAG_TO: 'origin/develop'
+                  REMOVE_TITLE_LINE: 'false'
+            - run: echo "${{steps.run1.outputs.markdown}}"
+            - name: 'Test run (REMOVE_TITLE_LINE: true)'
+              uses: ./
+              id: run2
+              with:
+                  GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
+                  LABEL_SETTINGS_FILE_PATH: './.github/lerna-changelog.json'
+                  TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+                  TAG_TO: 'origin/develop'
+                  REMOVE_TITLE_LINE: 'true'
+            - run: echo "${{steps.run2.outputs.markdown}}"
