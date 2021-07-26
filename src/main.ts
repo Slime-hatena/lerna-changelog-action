@@ -11,6 +11,7 @@ async function run(): Promise<void> {
         );
         const TAG_FROM = core.getInput('TAG_FROM');
         const TAG_TO = core.getInput('TAG_TO');
+        const RELEASE_TITLE = core.getInput('RELEASE_TITLE');
         const REMOVE_TITLE_LINE =
             core.getInput('REMOVE_TITLE_LINE').toLowerCase() === 'true';
 
@@ -18,6 +19,11 @@ async function run(): Promise<void> {
             fs.readFileSync(LABEL_SETTING_FILE_PATH, 'utf8')
         );
         const changelog = new Changelog(labelSettings);
+
+        if (RELEASE_TITLE !== undefined && RELEASE_TITLE === '') {
+            changelog.nextVersion = RELEASE_TITLE;
+        }
+
         changelog.repo = process.env.GITHUB_REPOSITORY ?? '';
         let markdown = await changelog.generate(TAG_FROM, TAG_TO);
 

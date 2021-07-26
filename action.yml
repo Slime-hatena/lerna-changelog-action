@@ -17,6 +17,10 @@ inputs:
         description: 'Specify the range of release note generation using a format that git understands. For example: origin/main, 4b825dc6, etc. The default value is "origin/main".'
         required: false
         default: 'origin/main'
+    RELEASE_TITLE:
+        description: 'Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)". The default value is "".'
+        required: false
+        default: ''
     REMOVE_TITLE_LINE:
         description: 'Remove the title line from the changelog. The default value is "true".'
         required: false
