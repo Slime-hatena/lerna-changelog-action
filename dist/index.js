@@ -189,12 +189,16 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             process.env['GITHUB_AUTH'] = core.getInput('GITHUB_AUTH');
-            const LABEL_SETTING_FILE_PATH = core.getInput('LABEL_SETTING_FILE_PATH');
+            const LABEL_SETTINGS_FILE_PATH = core.getInput('LABEL_SETTINGS_FILE_PATH');
             const TAG_FROM = core.getInput('TAG_FROM');
             const TAG_TO = core.getInput('TAG_TO');
+            const RELEASE_TITLE = core.getInput('RELEASE_TITLE');
             const REMOVE_TITLE_LINE = core.getInput('REMOVE_TITLE_LINE').toLowerCase() === 'true';
-            const labelSettings = JSON.parse(fs.readFileSync(LABEL_SETTING_FILE_PATH, 'utf8'));
+            const labelSettings = JSON.parse(fs.readFileSync(LABEL_SETTINGS_FILE_PATH, 'utf8'));
             const changelog = new Changelog_1.Changelog(labelSettings);
+            if (RELEASE_TITLE !== undefined && RELEASE_TITLE === '') {
+                changelog.nextVersion = RELEASE_TITLE;
+            }
             changelog.repo = (_a = process.env.GITHUB_REPOSITORY) !== null && _a !== void 0 ? _a : '';
             let markdown = yield changelog.generate(TAG_FROM, TAG_TO);
             if (REMOVE_TITLE_LINE) {
