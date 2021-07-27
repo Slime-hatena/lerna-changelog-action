@@ -7,13 +7,13 @@ async function run(): Promise<void> {
     try {
         process.env['GITHUB_AUTH'] = core.getInput('GITHUB_AUTH');
         const labelSettingsFilePath = core.getInput(
-            'label-settings-file-path'
+            'label_settings_file_path'
         );
-        const tagFrom = core.getInput('tag-from');
-        const tagTo = core.getInput('tag-to');
-        const releaseTitle = core.getInput('release-title');
+        const tagFrom = core.getInput('tag_from');
+        const tagTo = core.getInput('tag_to');
+        const releaseTitle = core.getInput('release_title');
         const removeTitleLine =
-            core.getInput('remove-title-line').toLowerCase() === 'true';
+            core.getInput('remove_title_line').toLowerCase() === 'true';
 
         const labelSettings = JSON.parse(
             fs.readFileSync(labelSettingsFilePath, 'utf8')

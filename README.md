@@ -11,11 +11,11 @@ Use lerna-changelog in GitHub action.
 | Name                       | Description                                                                                                                | Default                                      |
 | -------------------------  | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | `GITHUB_AUTH`              | (Required) Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN.                   |                                              |
-| `label-settings-file-path` | Specify the file path of the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |
-| `tag-from`                 | Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc.                                 | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |
-| `tag-to`                   | Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc.                                   | `'origin/main'`                              |
-| `release-title`            | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |
-| `remove-title-line`        | Remove the title line from the changelog.                                                                                  | `'true'`                                     |
+| `label_settings_file_path` | Specify the file path of the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |
+| `tag_from`                 | Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc.                                 | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |
+| `tag_to`                   | Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc.                                   | `'origin/main'`                              |
+| `release_title`            | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |
+| `remove_title_line`        | Remove the title line from the changelog.                                                                                  | `'true'`                                     |
 
 ### Output
 
@@ -45,8 +45,8 @@ jobs:
         id: changelog
         with:
           GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
-          tag-from: '4b825dc642cb6eb9a060e54bf8d69288fbee4904' #empty tree
-          tag-to: 'origin/main'
+          tag_from: '4b825dc642cb6eb9a060e54bf8d69288fbee4904' #empty tree
+          tag_to: 'origin/main'
       - run: echo "${{steps.changelog.outputs.markdown}}"
 ```
 

@@ -5,26 +5,26 @@ branding:
     icon: 'file-text'
     color: 'blue'
 inputs:
-    github-auth:
+    GITHUB_AUTH:
         description: 'Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN. This value must be specified.'
         required: true
-    label-settings-file-path:
+    label_settings_file_path:
         description: 'Specify the file path of the json file for label settings. The default value is "./.github/semantic_versioning_label.json".'
         required: false
         default: './.github/lerna-changelog.json'
-    tag-from:
+    tag_from:
         description: 'Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc. The default value is "4b825dc642cb6eb9a060e54bf8d69288fbee4904".'
         required: false
         default: '4b825dc642cb6eb9a060e54bf8d69288fbee4904'
-    tag-to:
+    tag_to:
         description: 'Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc. The default value is "origin/main".'
         required: false
         default: 'origin/main'
-    release-title:
+    release_title:
         description: 'Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)". The default value is "".'
         required: false
         default: ''
-    remove-title-line:
+    remove_title_line:
         description: 'Remove the title line from the changelog. The default value is "true".'
         required: false
         default: 'true'
