@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: "slime-hatena/lerna-changelog-action@main"
+      - uses: slime-hatena/lerna-changelog-action@main
         id: changelog
         with:
           GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
