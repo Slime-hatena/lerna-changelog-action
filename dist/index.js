@@ -189,19 +189,19 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             process.env['GITHUB_AUTH'] = core.getInput('GITHUB_AUTH');
-            const LABEL_SETTINGS_FILE_PATH = core.getInput('LABEL_SETTINGS_FILE_PATH');
-            const TAG_FROM = core.getInput('TAG_FROM');
-            const TAG_TO = core.getInput('TAG_TO');
-            const RELEASE_TITLE = core.getInput('RELEASE_TITLE');
-            const REMOVE_TITLE_LINE = core.getInput('REMOVE_TITLE_LINE').toLowerCase() === 'true';
-            const labelSettings = JSON.parse(fs.readFileSync(LABEL_SETTINGS_FILE_PATH, 'utf8'));
+            const labelSettingsFilePath = core.getInput('label_settings_file_path');
+            const tagFrom = core.getInput('tag_from');
+            const tagTo = core.getInput('tag_to');
+            const releaseTitle = core.getInput('release_title');
+            const removeTitleLine = core.getInput('remove_title_line').toLowerCase() === 'true';
+            const labelSettings = JSON.parse(fs.readFileSync(labelSettingsFilePath, 'utf8'));
             const changelog = new Changelog_1.Changelog(labelSettings);
-            if (RELEASE_TITLE !== undefined && RELEASE_TITLE === '') {
-                changelog.nextVersion = RELEASE_TITLE;
+            if (releaseTitle !== undefined && releaseTitle === '') {
+                changelog.nextVersion = releaseTitle;
             }
             changelog.repo = (_a = process.env.GITHUB_REPOSITORY) !== null && _a !== void 0 ? _a : '';
-            let markdown = yield changelog.generate(TAG_FROM, TAG_TO);
-            if (REMOVE_TITLE_LINE) {
+            let markdown = yield changelog.generate(tagFrom, tagTo);
+            if (removeTitleLine) {
                 markdown = markdown.substr(markdown.indexOf('\n', markdown.indexOf('\n', markdown.indexOf('\n', 0) + 1) + 1) + 1);
             }
             if (markdown.length === 0) {
