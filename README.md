@@ -1,4 +1,5 @@
 # lerna-changelog action
+
 [![test.yml/badge](https://github.com/Slime-hatena/lerna-changelog-action/actions/workflows/test.yml/badge.svg)](https://github.com/slime-hatena/lerna-changelog-action/actions/workflows/test.yml)
 
 Use lerna-changelog in GitHub action.
@@ -10,11 +11,11 @@ Use lerna-changelog in GitHub action.
 | Name                       | Description                                                                                                                | Default                                      |
 | -------------------------  | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | `GITHUB_AUTH`              | (Required) Specify a token that is authorized for the repository. Usually, specify secrets.GITHUB_TOKEN.                   |                                              |
-| `LABEL_SETTINGS_FILE_PATH` | Specify the file path of the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |
-| `TAG_FROM`                 | Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc.                                 | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |
-| `TAG_TO`                   | Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc.                                   | `'origin/main'`                              |
-| `RELEASE_TITLE`            | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |
-| `REMOVE_TITLE_LINE`        | Remove the title line from the changelog.                                                                                  | `'true'`                                     |
+| `label-settings-file-path` | Specify the file path of the json file for label settings.                                                                 | `'./.github/semantic_versioning_label.json'` |
+| `tag-from`                 | Specify the start position to generate changelog. For example: origin/main, 4b825dc6, etc.                                 | `'4b825dc642cb6eb9a060e54bf8d69288fbee4904'` |
+| `tag-to`                   | Specify the end position to generate changelog. For example: origin/main, 4b825dc6, etc.                                   | `'origin/main'`                              |
+| `release-title`            | Specify the name of the next version. If not specified, it will be "Unreleased (YYYY-MM-DD)".                              | `''`                                         |
+| `remove-title-line`        | Remove the title line from the changelog.                                                                                  | `'true'`                                     |
 
 ### Output
 
@@ -44,8 +45,8 @@ jobs:
         id: changelog
         with:
           GITHUB_AUTH: '${{ secrets.GITHUB_TOKEN }}'
-          TAG_FROM: '4b825dc642cb6eb9a060e54bf8d69288fbee4904' #empty tree
-          TAG_TO: 'origin/main'
+          tag-from: '4b825dc642cb6eb9a060e54bf8d69288fbee4904' #empty tree
+          tag-to: 'origin/main'
       - run: echo "${{steps.changelog.outputs.markdown}}"
 ```
 
@@ -102,6 +103,6 @@ jobs:
 
 ## Acknowledgements
 
--   [lerna/lerna-changelog](https://github.com/lerna/lerna-changelog)
--   [actions/typescript-action](https://github.com/actions/typescript-action)
--   [actions/javascript-action](https://github.com/actions/javascript-action)
+- [lerna/lerna-changelog](https://github.com/lerna/lerna-changelog)
+- [actions/typescript-action](https://github.com/actions/typescript-action)
+- [actions/javascript-action](https://github.com/actions/javascript-action)

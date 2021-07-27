@@ -6,28 +6,28 @@ import {info, success, error, br} from '../src/Output';
 async function run(): Promise<void> {
     try {
         process.env['GITHUB_AUTH'] = core.getInput('GITHUB_AUTH');
-        const LABEL_SETTINGS_FILE_PATH = core.getInput(
-            'LABEL_SETTINGS_FILE_PATH'
+        const labelSettingsFilePath = core.getInput(
+            'label-settings-file-path'
         );
-        const TAG_FROM = core.getInput('TAG_FROM');
-        const TAG_TO = core.getInput('TAG_TO');
-        const RELEASE_TITLE = core.getInput('RELEASE_TITLE');
-        const REMOVE_TITLE_LINE =
-            core.getInput('REMOVE_TITLE_LINE').toLowerCase() === 'true';
+        const tagFrom = core.getInput('tag-from');
+        const tagTo = core.getInput('tag-to');
+        const releaseTitle = core.getInput('release-title');
+        const removeTitleLine =
+            core.getInput('remove-title-line').toLowerCase() === 'true';
 
         const labelSettings = JSON.parse(
-            fs.readFileSync(LABEL_SETTINGS_FILE_PATH, 'utf8')
+            fs.readFileSync(labelSettingsFilePath, 'utf8')
         );
         const changelog = new Changelog(labelSettings);
 
-        if (RELEASE_TITLE !== undefined && RELEASE_TITLE === '') {
-            changelog.nextVersion = RELEASE_TITLE;
+        if (releaseTitle !== undefined && releaseTitle === '') {
+            changelog.nextVersion = releaseTitle;
         }
 
         changelog.repo = process.env.GITHUB_REPOSITORY ?? '';
-        let markdown = await changelog.generate(TAG_FROM, TAG_TO);
+        let markdown = await changelog.generate(tagFrom, tagTo);
 
-        if (REMOVE_TITLE_LINE) {
+        if (removeTitleLine) {
             markdown = markdown.substr(
                 markdown.indexOf(
                     '\n',
