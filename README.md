@@ -4,6 +4,9 @@
 
 Use lerna-changelog in GitHub action.
 
+Useful for creating such an automatic release action.  
+[slime-hatena/pull-request-based-release-template](https://github.com/slime-hatena/pull-request-based-release-template)
+
 ## Configuration
 
 ### Input
