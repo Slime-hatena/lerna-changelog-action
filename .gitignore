@@ -102,3 +102,6 @@ lib/**/*
 .vscode
 .changelog
 .GITHUB_AUTH
+
+# Github Actions
+.changelog
