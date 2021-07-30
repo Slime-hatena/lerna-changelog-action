@@ -51,9 +51,9 @@ jobs:
                   echo "::set-output name=minor::false";
                   echo "::set-output name=patch::false";
                   if [ "${{ steps.check-latest.outputs.skip }}" = "false" ]; then
-                    if [ `echo '${{ steps.changelog.outputs.markdown }}' | grep 'Breaking Change'` ] ; then
+                    if [ -n "`echo "${{ steps.changelog.outputs.markdown }}" | grep 'Breaking Change';`" ] ; then
                       echo "::set-output name=major::true";
-                    elif [ `echo '${{ steps.changelog.outputs.markdown }}' | grep 'Feature'` ] ; then
+                    elif [ -n "`echo "${{ steps.changelog.outputs.markdown }}" | grep 'Feature'`" ] ; then
                       echo "::set-output name=minor::true";
                     else
                       echo "::set-output name=patch::true";
