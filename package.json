@@ -29,7 +29,7 @@
         "lerna-changelog": "^2.2.0"
     },
     "devDependencies": {
-        "@types/jest": "^27.0.1",
+        "@types/jest": "^27.0.3",
         "@types/node": "^17.0.5",
         "@typescript-eslint/parser": "^4.29.3",
         "@vercel/ncc": "^0.33.1",
